@@ -29,7 +29,7 @@ export async function getStaticPaths() {
   const { data } = await client.query({ query: GET_SLUGS })
 
   return {
-    paths: data.allArticles.edges.map(slug => [ { params: { uid: slug.node._meta.uid } } ] ),
+    paths: [ data.allArticles.edges.map(slug => { params: { uid: slug.node._meta.uid } } ) ],
     fallback: false
   }
 }
