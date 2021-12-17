@@ -25,12 +25,12 @@ export const GET_POSTS = gql`
       }
     }
   }
-`;
+`
 
-export function getDetails(slug) {
+export function GET_DETAILS(slug) {
   var GET_POST_DETAILS = gql`
-    query getArticle($n: String = "${slug}") {
-      article(uid: $n, lang: "en-us") {
+    query getArticle($slug: String = "${slug}") {
+      article(uid: $slug, lang: "en-us") {
         feature_image
         published_at
         title
@@ -44,6 +44,20 @@ export function getDetails(slug) {
         }
       }
     }
-  `;
+  `
   return GET_POST_DETAILS
 }
+
+export const GET_SLUGS = gql`
+  {
+    allArticles(sortBy: published_at_DESC) {
+      edges {
+        node {
+          _meta {
+            uid
+          }
+        }
+      }
+    }
+  }
+`
