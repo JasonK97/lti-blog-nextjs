@@ -48,7 +48,7 @@ export function GET_DETAILS(slug) {
   return GET_POST_DETAILS
 }
 
-export const GET_SLUGS = gql`
+export const GET_UIDS = gql`
   {
     allArticles(sortBy: published_at_DESC) {
       edges {
